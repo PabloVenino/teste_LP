@@ -184,31 +184,49 @@ namespace Teste_LP
             TextoA_List = TextoA.Split(' ').ToList();
             TextoB_List = TextoB.Split(' ').ToList();
 
-
             // Os linguistas descobriram que as preposições em Klingon são as palavras de 3 letras que terminam numa letra tipo bar,
             // mas onde não ocorre a letra d. Portanto, é fácil ver que existem 63 preposições no Texto A.
             //
             // 1) E no Texto B, quantas preposições existem?
 
             int counter = 0;
-            foreach (var Char in TextoA_List)
+
+            foreach (var x in TextoA_List)
             {
-                if (Char.Length <= 3 && Char.Substring(Char.Length -1, 1) != "d") // tem que tirar as palavras com final em foo
+
+            }
+
+            var resultado = from T in TextoA_List
+                            let item = T.Substring(T.Length - 1, 1)
+                            where !(T.Contains("d")) &&
+                                  T.Length <= 3 &&
+                                  BarCharacters.Contains(item.ToString())
+                            select T;
+
+            foreach (var item in resultado)
+            {
+                counter++;
+                WriteLine(item);
+                WriteLine("----------------");
+            }
+
+            /*var result = from Char in BarCharacters
+                         where Char != "d"
+                         select Char;
+
+            foreach(var t in result)
+            {
+                foreach (var Char in TextoA_List)
                 {
-                    counter++;
-                    WriteLine(Char);
-                    WriteLine("-----------");
+                    if (Char.Length <= 3)
+                    {
+                        counter++;
+                        WriteLine(Char);
+                        WriteLine("-----------");
+                    }
                 }
-            }
-
-            var result = from s in FooCharacters
-                         where s.Length > 0
-                         select s;
-            
-            foreach(var cool in result)
-            {
-
-            }
+                WriteLine(t);
+            }*/
 
             WriteLine(counter);
 

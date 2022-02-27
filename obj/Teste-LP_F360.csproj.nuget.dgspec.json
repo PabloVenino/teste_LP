@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\source\\repos\\Teste-LP_F360\\Teste-LP_F360.csproj": {}
+    "C:\\Users\\pablo\\source\\repos\\Teste-LP\\Teste-LP_F360.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\source\\repos\\Teste-LP_F360\\Teste-LP_F360.csproj": {
+    "C:\\Users\\pablo\\source\\repos\\Teste-LP\\Teste-LP_F360.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\source\\repos\\Teste-LP_F360\\Teste-LP_F360.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\source\\repos\\Teste-LP\\Teste-LP_F360.csproj",
         "projectName": "Teste-LP_F360",
-        "projectPath": "C:\\Users\\pablo\\source\\repos\\Teste-LP_F360\\Teste-LP_F360.csproj",
+        "projectPath": "C:\\Users\\pablo\\source\\repos\\Teste-LP\\Teste-LP_F360.csproj",
         "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\source\\repos\\Teste-LP_F360\\obj\\",
+        "outputPath": "C:\\Users\\pablo\\source\\repos\\Teste-LP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
