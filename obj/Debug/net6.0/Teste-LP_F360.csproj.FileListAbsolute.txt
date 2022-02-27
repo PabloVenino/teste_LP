@@ -1,0 +1,15 @@
+C:\Users\pablo\source\repos\Teste-LP_F360\bin\Debug\net6.0\Teste-LP_F360.exe
+C:\Users\pablo\source\repos\Teste-LP_F360\bin\Debug\net6.0\Teste-LP_F360.deps.json
+C:\Users\pablo\source\repos\Teste-LP_F360\bin\Debug\net6.0\Teste-LP_F360.runtimeconfig.json
+C:\Users\pablo\source\repos\Teste-LP_F360\bin\Debug\net6.0\Teste-LP_F360.dll
+C:\Users\pablo\source\repos\Teste-LP_F360\bin\Debug\net6.0\Teste-LP_F360.pdb
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.csproj.AssemblyReference.cache
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.AssemblyInfoInputs.cache
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.AssemblyInfo.cs
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.csproj.CoreCompileInputs.cache
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.dll
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\refint\Teste-LP_F360.dll
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.pdb
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\Teste-LP_F360.genruntimeconfig.cache
+C:\Users\pablo\source\repos\Teste-LP_F360\obj\Debug\net6.0\ref\Teste-LP_F360.dll
