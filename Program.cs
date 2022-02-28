@@ -184,51 +184,80 @@ namespace Teste_LP
             TextoA_List = TextoA.Split(' ').ToList();
             TextoB_List = TextoB.Split(' ').ToList();
 
-            // Os linguistas descobriram que as preposições em Klingon são as palavras de 3 letras que terminam numa letra tipo bar,
-            // mas onde não ocorre a letra d. Portanto, é fácil ver que existem 63 preposições no Texto A.
-            //
-            // 1) E no Texto B, quantas preposições existem?
+            #region Preposições em Kinglon
+            int counterPrepA, counterPrepB;
+            counterPrepA = counterPrepB = 0;
+            
+            var resultPrepTextA = from T in TextoA_List
+                                  let LastCharIndex_TextA = T.Substring(T.Length - 1, 1)
+                                  where !(T.Contains("d")) &&
+                                          T.Length <= 3 &&
+                                          BarCharacters.Contains(LastCharIndex_TextA.ToString())
+                                  select T;
 
-            int counter = 0;
+            var resultPrepTextB = from T in TextoB_List
+                                  let LastCharIndex_TextB = T.Substring(T.Length - 1, 1)
+                                  where !(T.Contains("d")) &&
+                                        T.Length <= 3 &&
+                                        BarCharacters.Contains(LastCharIndex_TextB.ToString())
+                                  select T;
 
-            foreach (var x in TextoA_List)
-            {
 
-            }
+            foreach (var item in resultPrepTextA)
+                counterPrepA++;
+            foreach (var item in resultPrepTextB)
+                counterPrepB++;
+            #endregion
 
-            var resultado = from T in TextoA_List
-                            let item = T.Substring(T.Length - 1, 1)
-                            where !(T.Contains("d")) &&
-                                  T.Length <= 3 &&
-                                  BarCharacters.Contains(item.ToString())
-                            select T;
+            #region Verbos em Kinglon
+            int counterVerbA, counterVerbA1, counterVerbB, counterVerbB1;
+            counterVerbA = counterVerbA1 = counterVerbB = counterVerbB1 = 0;
 
-            foreach (var item in resultado)
-            {
-                counter++;
-                WriteLine(item);
-                WriteLine("----------------");
-            }
+            var resultVerbA = from T in TextoA_List
+                              let lastLetterA = T.Substring(T.Length -1, 1)
+                              where T.Length >= 8 &&
+                                    FooCharacters.Contains(lastLetterA.ToString())
+                              select T;
+            foreach (var item in resultVerbA)
+                counterVerbA++;
 
-            /*var result = from Char in BarCharacters
-                         where Char != "d"
-                         select Char;
+            var resultVerbA1 = from T in resultVerbA
+                               let firstLetterA = T.Substring(0, 1)
+                               where BarCharacters.Contains(firstLetterA.ToString())
+                               select T;
+            foreach(var item in resultVerbA1)
+                counterVerbA1++;
 
-            foreach(var t in result)
-            {
-                foreach (var Char in TextoA_List)
-                {
-                    if (Char.Length <= 3)
-                    {
-                        counter++;
-                        WriteLine(Char);
-                        WriteLine("-----------");
-                    }
-                }
-                WriteLine(t);
-            }*/
+            var resultVerbB = from T in TextoB_List
+                              let lastLetterB = T.Substring(T.Length - 1, 1)
+                              where T.Length >= 8 &&
+                                    FooCharacters.Contains(lastLetterB.ToString())
+                              select T;
+            var resultVerbB1 = from T in resultVerbB
+                               let firstLetterB2 = T.Substring(0, 1)
+                               where BarCharacters.Contains(firstLetterB2.ToString())
+                               select T;
 
-            WriteLine(counter);
+            foreach (var item in resultVerbB)
+                counterVerbB++;
+            foreach (var item in resultVerbB1)
+                counterVerbB1++;
+            #endregion
+
+            WriteLine("----------------------------");
+
+
+            WriteLine("Total de Preposições TextoA: {0}", counterPrepA);
+            WriteLine("Total de Preposições TextoB: {0}", counterPrepB);
+            WriteLine("----------------------------------------------");
+
+            WriteLine("Total de Verbos TextoA: {0}", counterVerbA);
+            WriteLine("Total de Verbos em 1° Pessoa TextoA: {0}", counterVerbA1);
+            WriteLine("-------------------------");
+            WriteLine("Total Verbos TextoB: {0}", counterVerbB);
+            WriteLine("Total de Verbos em 1° Pessoa TextoB: {0}", counterVerbB1);
+
+            WriteLine("----------------------------------------------");
 
             WriteLine("\nAperte qualquer letra para fechar");
             string txt = ReadLine();
