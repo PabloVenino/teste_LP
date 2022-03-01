@@ -177,6 +177,7 @@ namespace Teste_LP
             Alfabet alfabet = new Alfabet();
             var BarCharacters = alfabet.bar;
             var FooCharacters = alfabet.foo;
+            var CompleteAlfabet = alfabet.CompleteAlfabet;
 
             var TextoA_List = new List<string>();
             var TextoB_List = new List<string>();
@@ -187,7 +188,7 @@ namespace Teste_LP
             #region Preposições em Kinglon
             int counterPrepA, counterPrepB;
             counterPrepA = counterPrepB = 0;
-            
+
             var resultPrepTextA = from T in TextoA_List
                                   let LastCharIndex_TextA = T.Substring(T.Length - 1, 1)
                                   where !(T.Contains("d")) &&
@@ -214,7 +215,7 @@ namespace Teste_LP
             counterVerbA = counterVerbA1 = counterVerbB = counterVerbB1 = 0;
 
             var resultVerbA = from T in TextoA_List
-                              let lastLetterA = T.Substring(T.Length -1, 1)
+                              let lastLetterA = T.Substring(T.Length - 1, 1)
                               where T.Length >= 8 &&
                                     FooCharacters.Contains(lastLetterA.ToString())
                               select T;
@@ -225,7 +226,7 @@ namespace Teste_LP
                                let firstLetterA = T.Substring(0, 1)
                                where BarCharacters.Contains(firstLetterA.ToString())
                                select T;
-            foreach(var item in resultVerbA1)
+            foreach (var item in resultVerbA1)
                 counterVerbA1++;
 
             var resultVerbB = from T in TextoB_List
@@ -242,6 +243,71 @@ namespace Teste_LP
                 counterVerbB++;
             foreach (var item in resultVerbB1)
                 counterVerbB1++;
+            #endregion
+
+            #region TextoA Ordenado
+            var TextoA_OrderedList = new List<string>();
+
+            foreach (var item in TextoA_List)
+            {
+                if (!(TextoA_OrderedList.Contains(item)))
+                    TextoA_OrderedList.Add(item);
+            }
+            
+            var vocabulario = new Dictionary<string, string>();
+            var textoOrdenado = new StringBuilder("");
+            var ordemLetras = new StringBuilder("");
+            foreach (var palavra in TextoA_OrderedList)
+            {
+                ordemLetras.Clear();
+                foreach (var letra in palavra)
+                {
+                    ordemLetras.Append(CompleteAlfabet.IndexOf(letra.ToString()));
+                }
+                vocabulario.Add(palavra, ordemLetras.ToString());
+            }
+
+            var vocabularioOrdenado = vocabulario.OrderBy(x => x.Value);
+            foreach (var item in vocabularioOrdenado)
+            {
+                textoOrdenado.Append(item.Key + " ");
+            }
+            textoOrdenado.Remove(textoOrdenado.Length - 1, 1);
+            #endregion
+            #region TextoB Ordenado
+            var TextoB_OrderedList = new List<string>();
+
+            foreach (var item in TextoA_List)
+            {
+                if (!(TextoB_OrderedList.Contains(item)))
+                    TextoB_OrderedList.Add(item);
+            }
+
+            var vocabularioB = new Dictionary<string, string>();
+            var textoOrdenadoB = new StringBuilder("");
+            var ordemLetrasB = new StringBuilder("");
+            foreach (var palavra in TextoB_OrderedList)
+            {
+                ordemLetrasB.Clear();
+                foreach (var letra in palavra)
+                {
+                    ordemLetrasB.Append(CompleteAlfabet.IndexOf(letra.ToString()));
+                }
+                vocabularioB.Add(palavra, ordemLetrasB.ToString());
+            }
+
+            var vocabularioOrdenadoB = vocabularioB.OrderBy(x => x.Value);
+            foreach (var item in vocabularioOrdenadoB)
+            {
+                textoOrdenadoB.Append(item.Key + " ");
+            }
+            textoOrdenadoB.Remove(textoOrdenadoB.Length - 1, 1);
+            #endregion
+
+            #region Numeros Bonitos
+
+
+
             #endregion
 
             WriteLine("----------------------------");
