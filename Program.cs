@@ -12,91 +12,6 @@ namespace Teste_LP
     {
         public static void Main()
         {
-            #region Comentarios
-            /*
-                -- Teste de Klingon
-                Arqueólogos encontraram um pergaminho com os seguintes textos:
-
-                TextoA e TextoB:
-                Esses pergaminhos estão no antigo e misterioso idioma Klingon.
-                Após muitos anos de estudo, os linguistas já conhecem algumas características desse idioma.
-
-                Primeiramente, as letras Klingon são classificadas em dois grupos: as letras s, l, f, w e k são chamadas "letras tipo foo",
-                enquanto que as demais são conhecidas como "letras tipo bar".
-
-                Os linguistas descobriram que as preposições em Klingon são as palavras de 3 letras que terminam numa letra tipo bar,
-                mas onde não ocorre a letra d. Portanto, é fácil ver que existem 63 preposições no Texto A.
-
-                1) E no Texto B, quantas preposições existem?
-                
-            
-                -- Verbos em Klingon
-                Um outro fato interessante descoberto pelos linguistas é que, no Klingon,
-                os verbos sempre são palavras de 8 ou mais letras que terminam numa letra tipo foo.
-                Além disso, se um verbo começa com uma letra tipo bar, o verbo está em primeira pessoa.
-
-                Assim, lendo o Texto A, é possível identificar 26 verbos no texto, dos quais 23 estão em primeira pessoa.
-                
-                2) Já no Texto B, quantos são os verbos?
-                2.1) E quantos verbos do Texto B estão em primeira pessoa?
-                
-                -- Lista de vocabulário em Klingon
-                Um professor universitário utilizará os textos A e B para ensinar o Klingon aos alunos.
-                Para ajudar os alunos a compreender o texto, esse professor precisa criar uma lista de vocabulário para cada texto,
-                isto é, uma lista ordenada (e sem repetições) das palavras que aparecem em cada um dos textos.
-                
-                Essas listas devem estar ordenadas e não podem conter repetições de palavras.
-                No Klingon, assim como no nosso alfabeto, as palavras são ordenadas lexicograficamente, mas o problema é que no Klingon,
-                a ordem das letras no alfabeto é diferente da nossa. O alfabeto Klingon, em ordem, é: 
-                kbwrqdnfxjmlvhtcgzps. 
-
-                Assim, ao fazer essas listas, o professor deve respeitar a ordem alfabética Klingon.
-
-                O professor preparou a lista de vocabulário para o Texto A:
-                TextoA_Ordenado;
-
-                3) Como seria a lista de vocabulário do Texto B?
-                
-            
-                -- Mas como os Klingon escrevem números?
-                Bem, no Klingon, as palavras também são números dados em base 20, onde cada letra é um dígito,
-                e os dígitos são ordenados do menos significativo para o mais significativo (o inverso do nosso sistema).
-                Ou seja, a primeira posição é a unidade, a segunda posição vale 20, a terceira vale 400, e assim por diante.
-                Os valores das letras são dados pela ordem em que elas aparecem no alfabeto Klingon (que é diferente da nossa ordem, como vimos acima).
-                Ou seja, a primeira letra do alfabeto Klingon representa o dígito 0, a segunda representa o dígito 1, e assim por diante.
-
-                Por exemplo, a palavra vwv tem o valor numérico de 4852.
-
-                **OBS: os números nesse problema podem ser grandes, então se você está usando um tipo de dados de tamanho limitado,
-                *      tenha cuidado com possíveis overflows.
-
-                
-                Os Klingons consideram um número bonito se ele satisfaz essas duas propriedades:
-                - é maior ou igual a 440566
-                - é divisível por 3
-
-                Ao consideramos o Texto A como uma lista de números (isto é, interpretando cada palavra como um número usando a convenção explicada acima),
-                notamos que existem 126 números bonitos distintos.
-                
-                4) E no Texto B, quantos números bonitos distintos existem?
-                
-             ------------------------------------------------------------------------------------------------
-
-                Letras Klingon
-                Letras tipo foo: s, l, f, w, k
-
-                demais letras são tipo bar
-                1) preposições em Klingon são as palavras de 3 letras que terminam numa letra tipo bar, mas
-                onde NÃO ocorre a letra D.
-
-                2) os verbos em Klingon são palavras de 8 ou mais letras, e terminam numa letra tipo foo.
-                Caso comece com letra tipo Bar, está em 1° pessoa.
-
-                Ordem do alfabeto Klingon:
-                k, b, w, r, q, d, n, f, x, j, m, l, v, h, t, c, g, z, p, s
-                (kbwrqdnfxjmlvhtcgzps)              
-            */
-            #endregion
             #region TextoA
             string TextoA = "vwv rhjs vqgvcq pjdvb gjpsmc jsm zhctgvl jwgbbs mccxbmj mbspg cdhsspgx twndc pmpr bzqvnxs" +
                 " wnfwhcrp czj txvghq ltdtqrd plqnjsk rbsx ftc fwthpfb vdflfqs zvgbgb rxdrgkjp sbplvr tntr" +
@@ -174,6 +89,7 @@ namespace Teste_LP
                 " xsnfw tmrc xfglnt spdxfn kmvxx qtf kpmkjl fxxrchdg tzwl jqwd qjx zmqqbd jmvk vjldrv pqspncnk scmz zjzt dplp hhpt rwldkr" +
                 " mcbnbr kpx hxdz msdvx dbxcr hldpxf djxflkz hdhkfqh vsvzzft xwwxj pbqm ltfcl qnqd gslsk sdkzg ttxcwpc fkmlmqtk";
             #endregion
+
             Alfabet alfabet = new Alfabet();
             var BarCharacters = alfabet.bar;
             var FooCharacters = alfabet.foo;
@@ -254,25 +170,27 @@ namespace Teste_LP
                     TextoA_OrderedList.Add(item);
             }
             
-            var vocabulario = new Dictionary<string, string>();
-            var textoOrdenado = new StringBuilder("");
-            var ordemLetras = new StringBuilder("");
-            foreach (var palavra in TextoA_OrderedList)
+            var vocabulary = new Dictionary<string, string>();
+            var orderedTextA = new StringBuilder("");
+            var orderedLettersA = new StringBuilder("");
+            foreach (var word in TextoA_OrderedList)
             {
-                ordemLetras.Clear();
-                foreach (var letra in palavra)
+                orderedLettersA.Clear();
+                foreach (var letter in word)
                 {
-                    ordemLetras.Append(CompleteAlfabet.IndexOf(letra.ToString()));
+                    orderedLettersA.Append(CompleteAlfabet.IndexOf(letter.ToString()));
                 }
-                vocabulario.Add(palavra, ordemLetras.ToString());
+                vocabulary.Add(word, orderedLettersA.ToString());
             }
 
-            var vocabularioOrdenado = vocabulario.OrderBy(x => x.Value);
-            foreach (var item in vocabularioOrdenado)
+            var orderedVocabulary = vocabulary.OrderBy(x => x.Value);
+            foreach (var item in orderedVocabulary)
             {
-                textoOrdenado.Append(item.Key + " ");
+                orderedTextA.Append(item.Key + " ");
             }
-            textoOrdenado.Remove(textoOrdenado.Length - 1, 1);
+            orderedTextA.Remove(orderedTextA.Length - 1, 1);
+
+            WriteLine(orderedTextA);
             #endregion
             #region TextoB Ordenado
             var TextoB_OrderedList = new List<string>();
@@ -283,40 +201,69 @@ namespace Teste_LP
                     TextoB_OrderedList.Add(item);
             }
 
-            var vocabularioB = new Dictionary<string, string>();
-            var textoOrdenadoB = new StringBuilder("");
-            var ordemLetrasB = new StringBuilder("");
-            foreach (var palavra in TextoB_OrderedList)
+            var vocabularyB = new Dictionary<string, string>();
+            var orderedTextB = new StringBuilder("");
+            var orderedLettersB = new StringBuilder("");
+            foreach (var word in TextoB_OrderedList)
             {
-                ordemLetrasB.Clear();
-                foreach (var letra in palavra)
+                orderedLettersB.Clear();
+                foreach (var letter in word)
                 {
-                    ordemLetrasB.Append(CompleteAlfabet.IndexOf(letra.ToString()));
+                    orderedLettersB.Append(CompleteAlfabet.IndexOf(letter.ToString()));
                 }
-                vocabularioB.Add(palavra, ordemLetrasB.ToString());
+                vocabularyB.Add(word, orderedLettersB.ToString());
             }
 
-            var vocabularioOrdenadoB = vocabularioB.OrderBy(x => x.Value);
-            foreach (var item in vocabularioOrdenadoB)
+            var orderedVocabularyB = vocabularyB.OrderBy(x => x.Value);
+            foreach (var item in orderedVocabularyB)
             {
-                textoOrdenadoB.Append(item.Key + " ");
+                orderedTextB.Append(item.Key + " ");
             }
-            textoOrdenadoB.Remove(textoOrdenadoB.Length - 1, 1);
+            orderedTextB.Remove(orderedTextB.Length - 1, 1);
+            WriteLine("--------------");
+            WriteLine(orderedTextB);
             #endregion
 
             #region Numeros Bonitos
-
-
+            int counterBeautyNumbersA, counterBeautyNumbersB;
+            counterBeautyNumbersA = counterBeautyNumbersB = 0;
+            foreach(var item in TextoA_List)
+            {
+                long weigth = 1;
+                long number = 0;
+                foreach (var letter in item)
+                {
+                    number = CompleteAlfabet.IndexOf(letter.ToString()) * weigth;
+                    weigth *= 20;
+                }
+                if(number >= 440566 && number % 3 == 0)
+                    counterBeautyNumbersA++;
+            }
+            
+            foreach(var item in TextoB_List)
+            {
+                long weigth = 1;
+                long number = 0;
+                foreach(var letter in item)
+                {
+                    number = CompleteAlfabet.IndexOf(letter.ToString()) * weigth;
+                    weigth *= 20;
+                }
+                if (number >= 440566 && number % 3 == 0)
+                    counterBeautyNumbersB++;
+            }
 
             #endregion
 
-            WriteLine("----------------------------");
+            WriteLine("------------------Bem  vindo------------------");
 
-
+            WriteLine("Veja abaixo a quantidade de Preposições contidas nos textos A e B:");
             WriteLine("Total de Preposições TextoA: {0}", counterPrepA);
             WriteLine("Total de Preposições TextoB: {0}", counterPrepB);
+
             WriteLine("----------------------------------------------");
 
+            WriteLine("\nVeja abaixo a quantidade de Verbos contidos nos textos A e B:");
             WriteLine("Total de Verbos TextoA: {0}", counterVerbA);
             WriteLine("Total de Verbos em 1° Pessoa TextoA: {0}", counterVerbA1);
             WriteLine("-------------------------");
@@ -324,6 +271,11 @@ namespace Teste_LP
             WriteLine("Total de Verbos em 1° Pessoa TextoB: {0}", counterVerbB1);
 
             WriteLine("----------------------------------------------");
+
+            WriteLine("\nVeja abaixo a quantidade de Numeros Bonitos contidos nos textos A e B:");
+            WriteLine("Total de Numeros Bonitos TextoA: {0}", counterBeautyNumbersA);
+            WriteLine("Total de Numeros Bonitos TextoB: {0}", counterBeautyNumbersB);
+
 
             WriteLine("\nAperte qualquer letra para fechar");
             string txt = ReadLine();
